@@ -1,3 +1,31 @@
+import asyncio
+import atexit
+import logging
+import gc
+import os
+import signal
+import sys
+import warnings
+
+import click
+import dask
+from dask.utils import ignoring
+from dask.system import CPU_COUNT
+from distributed import Nanny, Worker
+from distributed.security import Security
+from distributed.cli.utils import check_python_3, install_signal_handlers
+from distributed.comm import get_address_host_port
+from distributed.preloading import validate_preload_argv
+from distributed.proctitle import (
+    enable_proctitle_on_children,
+    enable_proctitle_on_current,
+)
+from distributed.utils import deserialize_for_cli
+
+from toolz import valmap
+from tornado.ioloop import IOLoop, TimeoutError
+
+logger = logging.getLogger("distributed.dask_worker")
 
 def main(
     scheduler,

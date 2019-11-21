@@ -34,7 +34,7 @@ def main(
     tls_ca_file=None,
     tls_cert=None,
     tls_key=None,
-    dashboard_address="127.0.0.1:8788",
+    dashboard_address="0.0.0.0:8788",
     **kwargs
 ):
     g0, g1, g2 = gc.get_threshold()  # https://github.com/dask/distributed/issues/1653
