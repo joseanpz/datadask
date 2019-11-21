@@ -29,26 +29,26 @@ logger = logging.getLogger("distributed.dask_worker")
 
 def main(
     scheduler,
-    host,
-    worker_port,
-    listen_address,
-    contact_address,
-    nanny_port,
-    nthreads,
-    nprocs,
-    nanny,
-    name,
-    pid_file,
-    resources,
-    dashboard,
-    bokeh,
-    bokeh_port,
-    scheduler_file,
-    dashboard_prefix,
-    tls_ca_file,
-    tls_cert,
-    tls_key,
-    dashboard_address,
+    host=None,
+    worker_port=0,
+    listen_address=None,
+    contact_address=None,
+    nanny_port=0,
+    nthreads=0,
+    nprocs=1,
+    nanny=True,
+    name=None,
+    pid_file="",
+    resources="",
+    dashboard=True,
+    bokeh=None,
+    bokeh_port=None,
+    scheduler_file="",
+    dashboard_prefix="",
+    tls_ca_file=None,
+    tls_cert=None,
+    tls_key=None,
+    dashboard_address=":0",
     **kwargs
 ):
     g0, g1, g2 = gc.get_threshold()  # https://github.com/dask/distributed/issues/1653
@@ -228,3 +228,7 @@ def main(
         pass
     finally:
         logger.info("End worker")
+
+
+if __name__ == "__main__":
+    main("tcp://10.24.2.78:8786", name='worker-x')
