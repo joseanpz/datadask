@@ -25,6 +25,8 @@ from distributed.utils import deserialize_for_cli
 from toolz import valmap
 from tornado.ioloop import IOLoop, TimeoutError
 
+import config
+
 logger = logging.getLogger("distributed.dask_worker")
 
 def main(
@@ -231,4 +233,4 @@ def main(
 
 
 if __name__ == "__main__":
-    main("tcp://10.24.2.78:8786", name='worker-x')
+    main(config.DASK_SCHEDULE_URL)

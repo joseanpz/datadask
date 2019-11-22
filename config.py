@@ -1,0 +1,7 @@
+import os
+
+# worker
+DASK_SCHEDULE_HOST = os.environ.get('DASK_SCHEDULE_HOST', None)
+DASK_SCHEDULE_PORT = os.environ.get('DASK_SCHEDULE_PORT', None)
+
+DASK_SCHEDULE_URL = f'tcp://{DASK_SCHEDULE_HOST}:{DASK_SCHEDULE_PORT}'
