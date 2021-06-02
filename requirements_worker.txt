@@ -44,6 +44,6 @@ toolz==0.10.0
 tornado==6.0.3
 typing==3.7.4.1
 typing-extensions==3.7.4.1
-urllib3==1.25.7
+urllib3==1.26.5
 websocket-client==0.56.0
 zict==1.0.0
